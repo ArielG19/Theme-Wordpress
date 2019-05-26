@@ -1,5 +1,8 @@
 <?php 
-		
+	//Cuando requerimos es buena practica ponerlo al inicio
+	// Register Custom Navigation menu------------------------------------------------------------
+		require_once get_template_directory() . '/template-parts/navbar.php';
+
 	// buena practica agregar el nombre del tema cuando nombre la funcion tema1_agregar_css
 	//---------------creamos nuestra primer funcion para agragar css y js----------------------------- 
 		function agragar_css_js(){
@@ -49,6 +52,15 @@
 		}
 
 		add_action( 'widgets_init', 'mi_widget' );
+	//--------------Registrar menus-----------------------------------------------------------------------
+		function register_my_menus() {
+		  register_nav_menus(
+		    array(
+		      'menu-principal' => __( 'Mi Menu' ) //nombre del menu
+		     )
+		   );
+		 }
+		 add_action( 'init', 'register_my_menus' );
 
 
  ?>

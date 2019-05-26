@@ -24,19 +24,20 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                  </li>
-                </ul>
-            </div>
+            <!--Cargamos nuestro menu-->
+              <?php
+                wp_nav_menu( array(
+                  'theme_location'    => 'menu-principal', //nombre del menu con el que lo registramos
+                  'depth'             => 2,
+                  'container'         => 'div', //inicio de menu, lo siguiente son sus clases.
+                  'container_class'   => 'collapse navbar-collapse',
+                  'container_id'      => 'navbarNavDropdown',
+                  'menu_class'        => 'nav navbar-nav ml-auto',
+                  'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                  'walker'            => new WP_Bootstrap_Navwalker(), //configuraciones al archivo navbar.php
+                ) );
+              ?>
+              <!--Cargamos nuestro menu-->
         </div>
       </nav>
       <!--Menu-->

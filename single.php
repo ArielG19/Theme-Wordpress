@@ -35,15 +35,9 @@
               </div>
           <!--Entradas-->
        
-                    
-          <!--Categorias-->
-          <div class="col-md-3">
-            <div class="card-body">
-              <h4>Publicidad</h4>
-              <hr>
-              <img src="img/compu.jpg" class="img-fluid" width="200px" height="150px" alt="">
-            </div>
-          </div>
+            <!--Sidebar-->
+              <?php get_sidebar(); ?>
+            <!--Sidebar-->
 
         </div>
       </div>
