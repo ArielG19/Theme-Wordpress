@@ -1,5 +1,7 @@
 <?php 
-		//creamos nuestra primer funcion para agragar css y js
+		
+	// buena practica agregar el nombre del tema cuando nombre la funcion tema1_agregar_css
+	//---------------creamos nuestra primer funcion para agragar css y js----------------------------- 
 		function agragar_css_js(){
 			wp_enqueue_style( 'style', get_stylesheet_uri() );
 			wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
@@ -14,7 +16,7 @@
 		//pasamos el nombre de nuestra funcion
 		add_action('wp_enqueue_scripts','agragar_css_js');
 
-		//soporte para imagenes destacadas
+	//---------------soporte para imagenes destacadas-------------------------------------------------
 		if ( function_exists( 'add_theme_support' ) ) {
 	    add_theme_support( 'post-thumbnails' ); //usar post-thumbnails en index.php 
 	    set_post_thumbnail_size( 150, 150, true ); // default Featured Image dimensions (cropped)
@@ -23,6 +25,25 @@
 	    // delete the next line if you do not need additional image sizes
 	    add_image_size( 'category-thumb', 300, 9999 ); // 300 pixels wide (and unlimited height)
 	 }
+
+	 //--------------Agregar sidebar-------------------------------------------------------------------
+	 	
+		function mi_widget() {
+		    /* Register the 'primary' sidebar. */
+		    register_sidebar(
+		        array(
+		            'id'            => 'mi-widget', //usaremos en el sidebar.php
+		            'name'          => __( 'Mi Widget' ), //nombre
+		            'description'   => __( 'Mi primer widget' ), //descripcion
+		            'before_widget' => '<div class="card-body">', //agregamos el inicio del widget
+		            'after_widget'  => '</div>', // agregamos el final
+		            'before_title'  => '<h4 class="widget-title">', //inicio de titulo
+		            'after_title'   => '</h4><hr>',
+		        )
+			);
+		}
+
+		add_action( 'widgets_init', 'mi_widget' );
 
 
  ?>
